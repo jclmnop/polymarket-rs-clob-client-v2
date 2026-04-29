@@ -63,6 +63,7 @@ static CONFIG: phf::Map<ChainId, ContractConfig> = phf_map! {
         conditional_tokens: address!("0x4D97DCd97eC945f40cF65F87097ACe5EA0476045"),
         neg_risk_adapter: None,
         exchange_v2: Some(address!("0xE111180000d2663C0091e4f400237545B87B996B")),
+        conditional_tokens_adapter: Some(address!("0xADa100874d00e3331D00F2007a9c336a65009718")),
     },
     80002_u64 => ContractConfig {
         exchange: address!("0xdFE02Eb6733538f8Ea35D585af8DE5958AD99E40"),
@@ -70,6 +71,7 @@ static CONFIG: phf::Map<ChainId, ContractConfig> = phf_map! {
         conditional_tokens: address!("0x69308FB512518e39F9b16112fA8d994F4e2Bf8bB"),
         neg_risk_adapter: None,
         exchange_v2: Some(address!("0xE111180000d2663C0091e4f400237545B87B996B")),
+        conditional_tokens_adapter: None,
     },
 };
 
@@ -80,6 +82,7 @@ static NEG_RISK_CONFIG: phf::Map<ChainId, ContractConfig> = phf_map! {
         conditional_tokens: address!("0x4D97DCd97eC945f40cF65F87097ACe5EA0476045"),
         neg_risk_adapter: Some(address!("0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296")),
         exchange_v2: Some(address!("0xe2222d279d744050d28e00520010520000310F59")),
+        conditional_tokens_adapter: Some(address!("0xADa100874d00e3331D00F2007a9c336a65009718")),
     },
     80002_u64 => ContractConfig {
         exchange: address!("0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296"),
@@ -87,6 +90,7 @@ static NEG_RISK_CONFIG: phf::Map<ChainId, ContractConfig> = phf_map! {
         conditional_tokens: address!("0x69308FB512518e39F9b16112fA8d994F4e2Bf8bB"),
         neg_risk_adapter: Some(address!("0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296")),
         exchange_v2: Some(address!("0xe2222d279d744050d28e00520010520000310F59")),
+        conditional_tokens_adapter: None,
     },
 };
 
@@ -124,6 +128,7 @@ pub struct ContractConfig {
     pub neg_risk_adapter: Option<Address>,
     /// The V2 exchange contract address (CTF Exchange V2).
     pub exchange_v2: Option<Address>,
+    pub conditional_tokens_adapter: Option<Address>,
 }
 
 /// Wallet contract configuration for CREATE2 address derivation

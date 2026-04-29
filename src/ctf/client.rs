@@ -182,7 +182,10 @@ impl<P: Provider + Clone> Client<P> {
         })?;
         let wallet_contract_config = wallet_contract_config(chain_id);
 
-        let contract = IConditionalTokens::new(config.conditional_tokens, provider.clone());
+        let ctf_address = config.conditional_tokens_adapter.ok_or_else(|| {
+            CtfError::ContractCall(format!("CTF adapter not available on chain ID {chain_id}"))
+        })?;
+        let contract = IConditionalTokens::new(ctf_address, provider.clone());
         let proxy_factory = wallet_contract_config.and_then(|cfg| {
             cfg.proxy_factory
                 .map(|address| IProxyFactory::new(address, provider.clone()))
