@@ -1337,7 +1337,7 @@ impl<S: State> Client<S> {
     /// # Errors
     ///
     /// Returns an error if market metadata cannot be resolved.
-    pub(crate) async fn fee_info(&self, token_id: U256) -> Result<FeeInfo> {
+    pub async fn fee_info(&self, token_id: U256) -> Result<FeeInfo> {
         self.ensure_market_info_cached(token_id).await?;
         Ok(self
             .inner
